@@ -6,16 +6,16 @@
           <img class="slide-image" src="./pic-bzb@2x.png" alt="">
         </swiper-slide>
         <swiper-slide id="slide-1" class="broadcast-item">
-          <img class="slide-image" src="./pic-hhb@2x.png" alt="">
+          <img class="slide-image" src="./pic-qnb@2x.png" alt="">
         </swiper-slide>
         <swiper-slide id="slide-2" class="broadcast-item">
-          <img class="slide-image" src="./pic-qnb@2x.png" alt="">
+          <img class="slide-image" src="./pic-hhb@2x.png" alt="">
         </swiper-slide>
       </swiper>
     </section>
     <div class="content-box">
       <img class="top-img" src="./pic-sjdls@2x.png" alt="">
-      <div class="content-title">专属权益</div>
+      <div class="content-title" @click="testFn">专属权益</div>
       <div v-for="(item, index) in levelData[curIndex].list" :key="index" class="content-list">
         <img class="content-list-image" :src="item.icon" alt="">
         <div class="content-text">
@@ -97,8 +97,11 @@
         this.curIndex = this.$refs.mySwiper.swiper.activeIndex * 1
         console.log(this.$refs.mySwiper.swiper.activeIndex)
       },
+      testFn() {
+        wx.miniProgram.navigateTo({url: `package-personalCenter/successful-application`})
+      },
       submitLevel() {
-        API.Level.setLevel({data: {apply_level_id: 1}}).then((res) => {
+        API.Level.setLevel({data: {apply_level_id: (this.curIndex + 1)}}).then((res) => {
           this.$loading.hide()
           if (res.error !== this.$ERR_OK) {
             this.$toast.show(res.message)
