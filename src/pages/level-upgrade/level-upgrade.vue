@@ -225,11 +225,11 @@
     bottom: 0
     padding: 10px
     .submit-btn
-      height: 45px
+      padding: 12px 0 14.5px
       border-radius: 2px
       background: #D33B32
       layout(row)
-      align-items: center
+      align-items: flex-end
       justify-content: center
       .submit-text
         font-family: $font-family-medium
