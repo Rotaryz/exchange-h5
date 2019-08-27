@@ -15,7 +15,7 @@
     </section>
     <div class="content-box">
       <img class="top-img" src="./pic-sjdls@2x.png" alt="">
-      <div class="content-title" @click="testFn">专属权益</div>
+      <div class="content-title">专属权益</div>
       <div v-for="(item, index) in levelData[curIndex].list" :key="index" class="content-list">
         <img class="content-list-image" :src="item.icon" alt="">
         <div class="content-text">
@@ -145,11 +145,6 @@
           }
           console.log(`/package-personalCenter/successful-application?name=${name}&year=${year}&money=${money}`)
           wx.miniProgram.navigateTo({url: `/package-personalCenter/successful-application?name=${name}&year=${year}&money=${money}`})
-          if (res.error_code !== this.$ERR_OK) {
-            this.$toast.show(res.message)
-            return
-          }
-          console.log(res.data)
         })
       }
       // ...Helpers.methods,
