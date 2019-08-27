@@ -98,7 +98,7 @@
         console.log(this.$refs.mySwiper.swiper.activeIndex)
       },
       submitLevel() {
-        API.Level.setLevel({shop_id: (this.curIndex + 1)}).then((res) => {
+        API.Level.setLevel({data: {apply_level_id: 1}}).then((res) => {
           this.$loading.hide()
           if (res.error !== this.$ERR_OK) {
             this.$toast.show(res.message)
