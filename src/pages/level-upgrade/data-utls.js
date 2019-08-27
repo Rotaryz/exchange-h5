@@ -5,7 +5,6 @@ import HTTP from '@utils/http'
 export function getSearch() {
   let args = {}
   let query = location.href.split('?') || []
-  console.log(query)
   query = query[1] ? query[1] : ''
   let pairs = query.split('&')
   for (let i = 0; i < pairs.length; i++) {
@@ -19,7 +18,6 @@ export function getSearch() {
     // args[name] = value.replace(/%2F/, '/')
     args[name] = value
   }
-  console.log(args, query)
   args.api = decodeURIComponent(args.api)
   return _Debug(args)
 }

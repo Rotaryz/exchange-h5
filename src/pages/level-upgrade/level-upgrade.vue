@@ -15,7 +15,7 @@
     </section>
     <div class="content-box">
       <img class="top-img" src="./pic-sjdls@2x.png" alt="">
-      <div class="content-title" @click="testFn">专属权益</div>
+      <div class="content-title">专属权益</div>
       <div v-for="(item, index) in levelData[curIndex].list" :key="index" class="content-list">
         <img class="content-list-image" :src="item.icon" alt="">
         <div class="content-text">
@@ -104,7 +104,7 @@
       submitLevel() {
         API.Level.setLevel({data: {apply_level_id: (this.curIndex + 1)}}).then((res) => {
           this.$loading.hide()
-          if (res.error !== this.$ERR_OK) {
+          if (res.error_code !== this.$ERR_OK) {
             this.$toast.show(res.message)
             return
           }
@@ -129,7 +129,7 @@
             money = 90000
             break
           }
-          wx.miniProgram.navigateTo({url: `package-personalCenter/successful-application?name=${name}&year=${year}&money=${money}`})
+          wx.miniProgram.navigateTo({url: `/package-personalCenter/successful-application?name=${name}&year=${year}&money=${money}`})
         })
       }
       // ...Helpers.methods,
