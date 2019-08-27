@@ -160,11 +160,11 @@
     background: #fff
     box-sizing: border-box
     padding-bottom: 60px
+    padding-top: 16px
     min-height: 100vh
   .broadcast-wrapper
-    margin-top: 16px
     width: 100%
-    background: #f9f9f9
+    background-image: linear-gradient(180deg, #FFFFFF 4%, #F5F5F9 83%)
     .broadcast
       height: 100%
       .broadcast-item
@@ -223,7 +223,7 @@
     position: fixed
     left: 0
     bottom: 0
-    padding: 10px
+    padding: 10px 20px 15px
     .submit-btn
       padding: 12px 0 14.5px
       border-radius: 2px
