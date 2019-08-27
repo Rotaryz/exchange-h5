@@ -98,7 +98,8 @@
         console.log(this.$refs.mySwiper.swiper.activeIndex)
       },
       testFn() {
-        wx.miniProgram.navigateTo({url: `package-personalCenter/successful-application`})
+        wx.miniProgram.navigateTo({url: `/package-personalCenter/successful-application`})
+        console.log(wx.miniProgram.navigateTo({url: `package-personalCenter/successful-application`}))
       },
       submitLevel() {
         API.Level.setLevel({data: {apply_level_id: (this.curIndex + 1)}}).then((res) => {
