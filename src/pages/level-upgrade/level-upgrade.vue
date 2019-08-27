@@ -15,7 +15,7 @@
     </section>
     <div class="content-box">
       <img class="top-img" src="./pic-sjdls@2x.png" alt="">
-      <div class="content-title">专属权益</div>
+      <div class="content-title" @click="testFn">专属权益</div>
       <div v-for="(item, index) in levelData[curIndex].list" :key="index" class="content-list">
         <img class="content-list-image" :src="item.icon" alt="">
         <div class="content-text">
@@ -87,9 +87,7 @@
       // ...Helpers.computed,
     },
     created() {
-      // this.$loading.show('正在加载中...')
       let config = getSearch()
-      console.log(config)
       initConfig(config)
     },
     methods: {
@@ -98,7 +96,28 @@
         console.log(this.$refs.mySwiper.swiper.activeIndex)
       },
       testFn() {
-        wx.miniProgram.navigateTo({url: `/package-personalCenter/successful-application`})
+        let name
+        let year
+        let money
+        switch (this.curIndex) {
+        case 0:
+          name = '标准版'
+          year = ''
+          money = 6000
+          break
+        case 1:
+          name = '全能版'
+          year = '三'
+          money = 18000
+          break
+        case 2:
+          name = '合伙版'
+          year = '三'
+          money = 90000
+          break
+        }
+        console.log(`/package-personalCenter/successful-application?name=${name}&year=${year}&money=${money}`)
+        wx.miniProgram.navigateTo({url: `/package-personalCenter/successful-application?name=${name}&year=${year}&money=${money}`})
         console.log(wx.miniProgram.navigateTo({url: `package-personalCenter/successful-application`}))
       },
       submitLevel() {
