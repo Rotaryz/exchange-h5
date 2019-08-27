@@ -104,11 +104,6 @@
       submitLevel() {
         API.Level.setLevel({data: {apply_level_id: (this.curIndex + 1)}}).then((res) => {
           this.$loading.hide()
-          if (res.error_code !== this.$ERR_OK) {
-            this.$toast.show(res.message)
-            return
-          }
-          console.log(res.data)
           let name
           let year
           let money
@@ -129,7 +124,13 @@
             money = 90000
             break
           }
+          console.log(`/package-personalCenter/successful-application?name=${name}&year=${year}&money=${money}`)
           wx.miniProgram.navigateTo({url: `/package-personalCenter/successful-application?name=${name}&year=${year}&money=${money}`})
+          if (res.error_code !== this.$ERR_OK) {
+            this.$toast.show(res.message)
+            return
+          }
+          console.log(res.data)
         })
       }
       // ...Helpers.methods,
