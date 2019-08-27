@@ -73,8 +73,9 @@ module.exports = {
       ? // 代理生产地址.
         {
           proxy: {
-            '/api': {
-              target: process.env.VUE_APP_API
+            '/exchange-platform': {
+              target: process.env.VUE_APP_API,
+              changeOrigin: true
             }
           }
         }

@@ -2,19 +2,19 @@ const env = process.env
 const version = ``
 
 const LOCAL_URL = {
-  api: 'http://local.com'
+  api: 'https://exchange-platform-api.jerryf.cn/exchange-platform',
 }
 
 const DEV_URL = {
-  api: 'https://zhidian-api.jerryf.cn'
+  api: 'https://exchange-platform-api.jerryf.cn/exchange-platform',
 }
 
 const TEST_URL = {
-  api: 'https://zhidian-api.jkweixin.net'
+  api: 'https://exchange-platform-api.jkweixin.net/exchange-platform',
 }
 
 const PROD_URL = {
-  api: 'https://zhidian-api.jkweixin.com' + version
+  api: 'https://exchange-platform-api.jkweixin.com/exchange-platform' + version,
 }
 
 export const BASE_URL =

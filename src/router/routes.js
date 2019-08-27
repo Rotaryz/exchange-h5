@@ -1,4 +1,11 @@
 export default [
+  // 升级成为代理商
+  {
+    path: '/level-upgrade',
+    name: 'level-upgrade',
+    component: () => import('@pages/level-upgrade/level-upgrade')
+  },
+
   {
     path: '/',
     redirect: '/404',
