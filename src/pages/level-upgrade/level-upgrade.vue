@@ -2,10 +2,10 @@
   <div class="level-upgrade">
     <section class="broadcast-wrapper">
       <swiper ref="mySwiper" :options="options" class="broadcast" @slideChange="slideChange">
-        <swiper-slide id="slide-0" class="broadcast-item">
+        <swiper-slide v-if="levelId <= 0" id="slide-0" class="broadcast-item">
           <img class="slide-image" src="./pic-bzb@2x.png" alt="">
         </swiper-slide>
-        <swiper-slide id="slide-1" class="broadcast-item">
+        <swiper-slide v-if="levelId <= 1" id="slide-1" class="broadcast-item">
           <img class="slide-image" src="./pic-qnb@2x.png" alt="">
         </swiper-slide>
         <swiper-slide id="slide-2" class="broadcast-item">
@@ -16,7 +16,7 @@
     <div class="content-box">
       <img class="top-img" src="./pic-sjdls@2x.png" alt="">
       <div class="content-title">专属权益</div>
-      <div v-for="(item, index) in levelData[curIndex].list" :key="index" class="content-list">
+      <div v-for="(item, index) in levelData[selectId].list" :key="index" class="content-list">
         <img class="content-list-image" :src="item.icon" alt="">
         <div class="content-text">
           <div class="content-text-title">{{item.title}}</div>
@@ -25,12 +25,12 @@
       </div>
     </div>
     <div class="submit-btn-box">
-      <div class="submit-btn" @click="submitLevel">
+      <div :style="levelData[selectId].btnStyle" class="submit-btn" @click="submitLevel">
         <div class="submit-text">立即申请</div>
         <div class="submit-money-box">
           <div>¥</div>
-          <div class="submit-money-white">{{levelData[curIndex].buttonMoney}}</div>
-          <div>/{{levelData[curIndex].buttonYear}}年</div>
+          <div class="submit-money-white">{{levelData[selectId].buttonMoney}}</div>
+          <div>/{{levelData[selectId].buttonYear}}年</div>
         </div>
       </div>
     </div>
@@ -49,17 +49,20 @@
     0: {
       list: [{icon: require('./icon-cgq@2x.png'), title: '2-3折采购权', subTitle: '可获得比市场价格2-3折的采购价，等级越高，采购折扣越低。'}],
       buttonYear: '',
-      buttonMoney: '6000'
+      buttonMoney: '6000',
+      btnStyle: 'color: #704F1B; background-image: linear-gradient(114deg, #F5E5C1 1%, #F2D699 98%)'
     },
     1: {
       list: [{icon: require('./icon-cgq@2x.png'), title: '1-2折采购权', subTitle: '可获得比市场价格1-2折的采购价，等级越高，采购折扣越低。'}, {icon: require('./icon-xsq@2x.png'), title: '销售权', subTitle: '可获得账号销售资格，销售后可获得对应的业务补贴及商品补贴。'}],
       buttonYear: '3',
-      buttonMoney: '18000'
+      buttonMoney: '18000',
+      btnStyle: 'color: #8A584B; background-image: linear-gradient(114deg, #E4CDC3 1%, #D8AF9A 98%)'
     },
     2: {
       list: [{icon: require('./icon-cgq@2x.png'), title: '0.5-1折采购权', subTitle: '可获得比市场价格0.5-1折的采购价，等级越高，采购折扣越低。'}, {icon: require('./icon-xsq@2x.png'), title: '销售权', subTitle: '可获得账号销售资格，销售后可获得对应的业务补贴及商品补贴。'}, {icon: require('./icon-zh@2x.png'), title: '赠送5个全能版', subTitle: '合伙版将赠送5个全能版账号开通权，可自动对推荐的用户进行等级开通。'}],
       buttonYear: '3',
-      buttonMoney: '90000'
+      buttonMoney: '90000',
+      btnStyle: 'color: #F5E2B4; background-image: linear-gradient(114deg, #3F3F3F 1%, #121212 97%)'
     }
   }
   export default {
@@ -80,7 +83,9 @@
           spaceBetween : 5
         },
         curIndex: 0,
-        levelData: LEVELDATA
+        levelData: LEVELDATA,
+        levelId: 0,
+        selectId: 0
       }
     },
     computed: {
@@ -89,17 +94,30 @@
     created() {
       let config = getSearch()
       initConfig(config)
+      this.levelId = config.levelId * 1
+      this.selectId = this.levelId
     },
     methods: {
       slideChange() {
         this.curIndex = this.$refs.mySwiper.swiper.activeIndex * 1
+        switch (this.levelId) {
+        case 0:
+          this.selectId = this.curIndex
+          break
+        case 1:
+          this.selectId = this.curIndex + 1
+          break
+        case 2:
+          this.selectId = this.curIndex + 2
+          break
+        }
         console.log(this.$refs.mySwiper.swiper.activeIndex)
       },
       testFn() {
         let name
         let year
         let money
-        switch (this.curIndex) {
+        switch (this.selectId) {
         case 0:
           name = '标准版'
           year = ''
@@ -121,12 +139,12 @@
         console.log(wx.miniProgram.navigateTo({url: `package-personalCenter/successful-application`}))
       },
       submitLevel() {
-        API.Level.setLevel({data: {apply_level_id: (this.curIndex + 1)}}).then((res) => {
+        API.Level.setLevel({data: {apply_level_id: (this.selectId + 1)}}).then((res) => {
           this.$loading.hide()
           let name
           let year
           let money
-          switch (this.curIndex) {
+          switch (this.selectId) {
           case 0:
             name = '标准版'
             year = ''
@@ -230,14 +248,13 @@
       layout(row)
       align-items: flex-end
       justify-content: center
+      color: #fff
       .submit-text
         font-family: $font-family-medium
-        color: #fff
         font-size: $font-size-16
         margin-right: 17px
       .submit-money-box
         font-family: $font-family-regular
-        color: #fff
         font-size: $font-size-13
         layout(row)
         align-items: flex-end
