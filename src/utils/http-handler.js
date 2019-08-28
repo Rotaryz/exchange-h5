@@ -47,7 +47,7 @@ HTTP.setCallback({
       }
     }
     // 处理错误函数
-    if (res.code !== ERR_OK || res.error !== ERR_OK || res.error_code !== ERR_OK) {
+    if (res.error_code !== ERR_OK) {
       console.error(url + ' <<<<<<接口异常>>>>> ' + JSON.stringify(res))
       err = true
       if (typeof doctor === 'function') {
