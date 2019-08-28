@@ -143,7 +143,6 @@
             money = 90000
             break
           }
-          alert(`/package-personalCenter/successful-application?name=${name}&year=${year}&money=${money}`)
           wx.miniProgram.navigateTo({url: `/package-personalCenter/successful-application?name=${name}&year=${year}&money=${money}`})
         })
       }
