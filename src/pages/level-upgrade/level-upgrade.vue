@@ -143,7 +143,7 @@
             money = 90000
             break
           }
-          console.log(`/package-personalCenter/successful-application?name=${name}&year=${year}&money=${money}`)
+          alert(`/package-personalCenter/successful-application?name=${name}&year=${year}&money=${money}`)
           wx.miniProgram.navigateTo({url: `/package-personalCenter/successful-application?name=${name}&year=${year}&money=${money}`})
         })
       }
