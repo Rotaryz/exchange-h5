@@ -94,7 +94,7 @@
     created() {
       let config = getSearch()
       initConfig(config)
-      this.levelId = config.levelId * 1
+      this.levelId = config.levelId * 1 || 0
       this.selectId = this.levelId
     },
     methods: {
