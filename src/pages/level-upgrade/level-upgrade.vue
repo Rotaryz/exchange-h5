@@ -47,19 +47,19 @@
   const TITLE = '升级成为代理商'
   const LEVELDATA = {
     0: {
-      list: [{icon: require('./icon-cgq@2x.png'), title: '2-3折采购权', subTitle: '可获得比市场价格2-3折的采购优惠价，等级越高，采购折扣越低。'}],
+      list: [{icon: require('./icon-cgq@2x.png'), title: '2-3折采购权', subTitle: '可获得为市场价格2-3折的采购优惠价，等级越高，采购折扣越低。'}],
       buttonYear: '',
       buttonMoney: '6000',
       btnStyle: 'color: #704F1B; background-image: linear-gradient(114deg, #F5E5C1 1%, #F2D699 98%)'
     },
     1: {
-      list: [{icon: require('./icon-cgq@2x.png'), title: '1-2折采购权', subTitle: '可获得比市场价格1-2折的采购优惠价，等级越高，采购折扣越低。'}, {icon: require('./icon-xsq@2x.png'), title: '销售权', subTitle: '可获得账号销售资格，销售后可获得对应的业务补贴及商品补贴。'}],
+      list: [{icon: require('./icon-cgq@2x.png'), title: '1-2折采购权', subTitle: '可获得为市场价格1-2折的采购优惠价，等级越高，采购折扣越低。'}, {icon: require('./icon-xsq@2x.png'), title: '销售权', subTitle: '可获得账号销售资格，销售后可获得对应的业务补贴及商品补贴。'}],
       buttonYear: '3',
       buttonMoney: '18000',
       btnStyle: 'color: #8A584B; background-image: linear-gradient(114deg, #E4CDC3 1%, #D8AF9A 98%)'
     },
     2: {
-      list: [{icon: require('./icon-cgq@2x.png'), title: '0.5-1折采购权', subTitle: '可获得比市场价格0.5-1折的采购优惠价，等级越高，采购折扣越低。'}, {icon: require('./icon-xsq@2x.png'), title: '销售权', subTitle: '可获得账号销售资格，销售后可获得对应的业务补贴及商品补贴。'}, {icon: require('./icon-zh@2x.png'), title: '赠送5个全能版', subTitle: '合伙版将赠送5个全能版账号开通权，可自动对推荐的用户进行等级开通。'}],
+      list: [{icon: require('./icon-cgq@2x.png'), title: '0.5-1折采购权', subTitle: '可获得为市场价格0.5-1折的采购优惠价，等级越高，采购折扣越低。'}, {icon: require('./icon-xsq@2x.png'), title: '销售权', subTitle: '可获得账号销售资格，销售后可获得对应的业务补贴及商品补贴。'}, {icon: require('./icon-zh@2x.png'), title: '赠送5个全能版', subTitle: '合伙版将赠送5个全能版账号开通权，可自动对推荐的用户进行等级开通。'}],
       buttonYear: '3',
       buttonMoney: '90000',
       btnStyle: 'color: #F5E2B4; background-image: linear-gradient(114deg, #3F3F3F 1%, #121212 97%)'
