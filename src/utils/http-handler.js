@@ -35,11 +35,11 @@ HTTP.setCallback({
     } else if (loading) {
       hideLoading()
     }
-    if (res.code !== ERR_OK) {
-      errorCodeHandle(res.code)
+    if (res.error_code !== ERR_OK) {
+      errorCodeHandle(res.error_code)
     }
     // 可自定义处理toast错误
-    if (res.error !== ERR_OK) {
+    if (res.error_code !== ERR_OK) {
       if (typeof toast === 'function') {
         toast(res)
       } else if (toast) {
